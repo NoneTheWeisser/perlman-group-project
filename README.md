@@ -1,4 +1,4 @@
-# EDA Solo Project - Starting Repo
+# EDA Group Project - Starting Repo
 
 This version uses React, Zustand, Express, Passport, and PostgreSQL. (A full list of dependencies can be found in `package.json`.)
 
