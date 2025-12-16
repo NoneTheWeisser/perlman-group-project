@@ -5,31 +5,20 @@ DROP TRIGGER IF EXISTS "on_user_update" ON "user";
 DROP TABLE IF EXISTS "user";
 
 
--------------------------------------------------------
---------------------------------------------------
--- TABLE SCHEMAS:
--- Default
--- CREATE TABLE "user" (
---   "id" SERIAL PRIMARY KEY,
---   "username" VARCHAR (80) UNIQUE NOT NULL,
---   "password" VARCHAR (1000) NOT NULL,
---   "inserted_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
---   "updated_at" TIMESTAMPTZ NOT NULL DEFAULT now()
--- );
 
 -- Proposed user table 
 CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR(100) NOT NULL UNIQUE,
-    "email" VARCHAR(255) NOT NULL UNIQUE,
-    "password" VARCHAR(255) NOT NULL,
-    "first_name" VARCHAR(100) NOT NULL,
-    "last_name" VARCHAR(100) NOT NULL,
-    "role" VARCHAR(50) NOT NULL,
-    "department" VARCHAR(50),
-    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT now()
-);
+
+  "id" SERIAL PRIMARY KEY,
+  "username" VARCHAR (80) UNIQUE NOT NULL,
+  "password" VARCHAR (1000) NOT NULL,
+   "role" VARCHAR(50) NOT NULL CHECK (role IN ('board', 'department_manager', 'director')),
+   "department" VARCHAR(50) CHECK (department IN ('Kitchen', 'Pantry', 'Development', 'Outreach', 'Compliance', 'HR', 'Shelter', 'Finance', 'Media', 'All')),
+  "inserted_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+  "updated_at" TIMESTAMPTZ NOT NULL DEFAULT now()
+
+ 
+
 
 
 -------------------------------------------------------
