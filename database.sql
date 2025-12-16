@@ -5,10 +5,10 @@ DROP TRIGGER IF EXISTS "on_user_update" ON "user";
 DROP TABLE IF EXISTS "user";
 
 
--------------------------------------------------------
---------------------------------------------------
--- TABLE SCHEMAS:
+
+-- Proposed user table 
 CREATE TABLE "user" (
+
   "id" SERIAL PRIMARY KEY,
   "username" VARCHAR (80) UNIQUE NOT NULL,
   "password" VARCHAR (1000) NOT NULL,
@@ -16,7 +16,8 @@ CREATE TABLE "user" (
    "department" VARCHAR(50) CHECK (department IN ('Kitchen', 'Pantry', 'Development', 'Outreach', 'Compliance', 'HR', 'Shelter', 'Finance', 'Media', 'All')),
   "inserted_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
   "updated_at" TIMESTAMPTZ NOT NULL DEFAULT now()
-);
+
+ 
 
 
 
