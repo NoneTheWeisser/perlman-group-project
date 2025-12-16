@@ -12,9 +12,12 @@ CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
   "username" VARCHAR (80) UNIQUE NOT NULL,
   "password" VARCHAR (1000) NOT NULL,
+   "role" VARCHAR(50) NOT NULL CHECK (role IN ('board', 'department_manager', 'director')),
+   "department" VARCHAR(50) CHECK (department IN ('Kitchen', 'Pantry', 'Development', 'Outreach', 'Compliance', 'HR', 'Shelter', 'Finance', 'Media', 'All')),
   "inserted_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
   "updated_at" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
 
 
 -------------------------------------------------------
